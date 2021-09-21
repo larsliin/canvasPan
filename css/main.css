@@ -1,11 +1,15 @@
 /*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
 
+
 /* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+
+
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
+
 
 /* ==========================================================================
    Base styles: opinionated defaults
@@ -16,6 +20,7 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
+
 
 /*
  * Remove text-shadow in selection highlight:
@@ -37,15 +42,18 @@ html {
     text-shadow: none;
 }
 
+
 /*
  * A better looking default horizontal rule
  */
+
 
 /*
  * Remove the gap between audio, canvas, iframes,
  * images, videos and the bottom of their containers:
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
+
 
 /*
  * Remove default fieldset styles.
@@ -57,6 +65,7 @@ fieldset {
     padding: 0;
 }
 
+
 /*
  * Allow only vertical resizing of textareas.
  */
@@ -65,13 +74,16 @@ textarea {
     resize: vertical;
 }
 
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+
 
 /*
  * Hide visually and from screen readers
@@ -81,6 +93,7 @@ textarea {
 [hidden] {
     display: none !important;
 }
+
 
 /*
  * Hide only visually, but have it available for screen readers:
@@ -104,6 +117,7 @@ textarea {
     /* 1 */
 }
 
+
 /*
  * Extends the .sr-only class to allow the element
  * to be focusable when navigated to via the keyboard:
@@ -121,6 +135,7 @@ textarea {
     width: auto;
 }
 
+
 /*
  * Hide visually and from screen readers, but maintain layout
  */
@@ -128,6 +143,7 @@ textarea {
 .invisible {
     visibility: hidden;
 }
+
 
 /*
  * Clearfix: contain floats
@@ -151,6 +167,7 @@ textarea {
     clear: both;
 }
 
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -161,17 +178,15 @@ textarea {
     /* Style adjustments for viewports that meet the condition */
 }
 
-html, body
-{
-    height: 100%;
+body {
+    background: #eee;
     margin: 0;
-    padding: 0px;
-    overflow: hidden;
 }
 
-#canvas
-{
-  width: 100%;
-  height: 100%;
-  background: #111;
+canvas {
+    position: absolute;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .25);
+    top: 20px;
+    left: 20px;
 }

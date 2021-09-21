@@ -1,139 +1,96 @@
-let canvas = document.getElementById("canvas")
-let ctx = canvas.getContext('2d')
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth - 40;
+canvas.height = window.innerHeight - 40;
+const rand = (m = 255, M = m + (m = 0)) => (Math.random() * (M - m) + m) | 0;
 
-let cameraOffset = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
-let cameraZoom = 1
-let MAX_ZOOM = 5
-let MIN_ZOOM = 0.1
-let SCROLL_SENSITIVITY = 0.0005
-
-function draw() {
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-
-    // Translate to the canvas centre before zooming - so you'll always zoom on what you're looking directly at
-    ctx.translate(window.innerWidth / 2, window.innerHeight / 2)
-    ctx.scale(cameraZoom, cameraZoom)
-    ctx.translate(-window.innerWidth / 2 + cameraOffset.x, -window.innerHeight / 2 + cameraOffset.y)
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
-    ctx.fillStyle = "#991111"
-    drawRect(-50, -50, 100, 100)
-
-    ctx.fillStyle = "#eecc77"
-    drawRect(-35, -35, 20, 20)
-    drawRect(15, -35, 20, 20)
-    drawRect(-35, 15, 70, 20)
-
-    ctx.fillStyle = "#fff"
-    drawText("Simple Pan and Zoom Canvas", -255, -100, 32, "courier")
-
-    ctx.rotate(-31 * Math.PI / 180)
-    ctx.fillStyle = `#${(Math.round(Date.now() / 40) % 4096).toString(16)}`
-    drawText("Now with touch!", -110, 100, 32, "courier")
-
-    ctx.fillStyle = "#fff"
-    ctx.rotate(31 * Math.PI / 180)
-
-    drawText("Wow, you found me!", -260, -2000, 48, "courier")
-
-    requestAnimationFrame(draw)
+const objects = [];
+for (let i = 0; i < 100; i++) {
+    objects.push({ x: rand(canvas.width), y: rand(canvas.height), w: rand(40), h: rand(40), col: `rgb(${rand()},${rand()},${rand()})` });
 }
+requestAnimationFrame(drawCanvas);
 
-// Gets the relevant location from a mouse or single touch event
-function getEventLocation(e) {
-    if (e.touches && e.touches.length == 1) {
-        return { x: e.touches[0].clientX, y: e.touches[0].clientY }
-    }
-    else if (e.clientX && e.clientY) {
-        return { x: e.clientX, y: e.clientY }
-    }
-}
+const view = (() => {
+    const matrix = [1, 0, 0, 1, 0, 0]; // current view transform
+    var m = matrix; // alias 
+    var scale = 1; // current scale
+    var ctx; // reference to the 2D context
+    const pos = { x: 0, y: 0 }; // current position of origin
+    var dirty = true;
+    const API = {
+        set context(_ctx) {
+            ctx = _ctx;
+            dirty = true
+        },
+        apply() {
+            if (dirty) { this.update() }
+            ctx.setTransform(m[0], m[1], m[2], m[3], m[4], m[5])
+        },
+        get scale() { return scale },
+        get position() { return pos },
+        isDirty() { return dirty },
+        update() {
+            dirty = false;
+            m[3] = m[0] = scale;
+            m[2] = m[1] = 0;
+            m[4] = pos.x;
+            m[5] = pos.y;
+        },
+        pan(amount) {
+            if (dirty) { this.update() }
+            pos.x += amount.x;
+            pos.y += amount.y;
+            dirty = true;
+        },
+        scaleAt(at, amount) { // at in screen coords
+            if (dirty) { this.update() }
+            scale *= amount;
+            console.log(scale);
+            pos.x = at.x - (at.x - pos.x) * amount;
+            pos.y = at.y - (at.y - pos.y) * amount;
+            dirty = true;
+        },
+    };
+    return API;
+})();
+view.context = ctx;
 
-function drawRect(x, y, width, height) {
-    ctx.fillRect(x, y, width, height)
-}
+function drawCanvas() {
+    if (view.isDirty()) {
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-function drawText(text, x, y, size, font) {
-    ctx.font = `${size}px ${font}`
-    ctx.fillText(text, x, y)
-}
-
-let isDragging = false
-let dragStart = { x: 0, y: 0 }
-
-function onPointerDown(e) {
-    isDragging = true
-    dragStart.x = getEventLocation(e).x / cameraZoom - cameraOffset.x
-    dragStart.y = getEventLocation(e).y / cameraZoom - cameraOffset.y
-}
-
-function onPointerUp(e) {
-    isDragging = false
-    initialPinchDistance = null
-    lastZoom = cameraZoom
-}
-
-function onPointerMove(e) {
-    if (isDragging) {
-        cameraOffset.x = getEventLocation(e).x / cameraZoom - dragStart.x
-        cameraOffset.y = getEventLocation(e).y / cameraZoom - dragStart.y
-    }
-}
-
-function handleTouch(e, singleTouchHandler) {
-    if (e.touches.length == 1) {
-        singleTouchHandler(e)
-    }
-    else if (e.type == "touchmove" && e.touches.length == 2) {
-        isDragging = false
-        handlePinch(e)
-    }
-}
-
-let initialPinchDistance = null
-let lastZoom = cameraZoom
-
-function handlePinch(e) {
-    e.preventDefault()
-
-    let touch1 = { x: e.touches[0].clientX, y: e.touches[0].clientY }
-    let touch2 = { x: e.touches[1].clientX, y: e.touches[1].clientY }
-
-    // This is distance squared, but no need for an expensive sqrt as it's only used in ratio
-    let currentDistance = (touch1.x - touch2.x) ** 2 + (touch1.y - touch2.y) ** 2
-
-    if (initialPinchDistance == null) {
-        initialPinchDistance = currentDistance
-    }
-    else {
-        adjustZoom(null, currentDistance / initialPinchDistance)
-    }
-}
-
-function adjustZoom(zoomAmount, zoomFactor) {
-    if (!isDragging) {
-        if (zoomAmount) {
-            cameraZoom += zoomAmount
+        view.apply(); // set the 2D context transform to the view
+        for (i = 0; i < objects.length; i++) {
+            var obj = objects[i];
+            ctx.fillStyle = obj.col;
+            ctx.fillRect(obj.x, obj.y, obj.h, obj.h);
         }
-        else if (zoomFactor) {
-            console.log(zoomFactor)
-            cameraZoom = zoomFactor * lastZoom
-        }
+    }
+    requestAnimationFrame(drawCanvas);
+}
 
-        cameraZoom = Math.min(cameraZoom, MAX_ZOOM)
-        cameraZoom = Math.max(cameraZoom, MIN_ZOOM)
+canvas.addEventListener("mousemove", mouseEvent, { passive: true });
+canvas.addEventListener("mousedown", mouseEvent, { passive: true });
+canvas.addEventListener("mouseup", mouseEvent, { passive: true });
+canvas.addEventListener("mouseout", mouseEvent, { passive: true });
+canvas.addEventListener("wheel", mouseWheelEvent, { passive: false });
+const mouse = { x: 0, y: 0, oldX: 0, oldY: 0, button: false };
 
-        console.log(zoomAmount)
+function mouseEvent(event) {
+    if (event.type === "mousedown") { mouse.button = true }
+    if (event.type === "mouseup" || event.type === "mouseout") { mouse.button = false }
+    mouse.oldX = mouse.x;
+    mouse.oldY = mouse.y;
+    mouse.x = event.offsetX;
+    mouse.y = event.offsetY
+    if (mouse.button) { // pan
+        view.pan({ x: mouse.x - mouse.oldX, y: mouse.y - mouse.oldY });
     }
 }
 
-canvas.addEventListener('mousedown', onPointerDown)
-canvas.addEventListener('touchstart', (e) => handleTouch(e, onPointerDown))
-canvas.addEventListener('mouseup', onPointerUp)
-canvas.addEventListener('touchend', (e) => handleTouch(e, onPointerUp))
-canvas.addEventListener('mousemove', onPointerMove)
-canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove))
-canvas.addEventListener('wheel', (e) => adjustZoom(e.deltaY * SCROLL_SENSITIVITY))
-
-// Ready, set, go
-draw()
+function mouseWheelEvent(event) {
+    var x = event.offsetX;
+    var y = event.offsetY;
+    if (event.deltaY < 0) { view.scaleAt({ x, y }, 1.1) } else { view.scaleAt({ x, y }, 1 / 1.1) }
+    event.preventDefault();
+}
