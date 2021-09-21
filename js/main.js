@@ -1,3 +1,7 @@
+/*
+    https://stackoverflow.com/a/60235061
+*/
+
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth - 40;
 canvas.height = window.innerHeight - 40;
