@@ -1,18 +1,95 @@
 /*
     https://stackoverflow.com/a/60235061
 */
-
+const settings = { outerMargX: 20, outerMargY: 20, innerMargX: 100, innerMargY: 100, gutterX: 100, gutterY: 100, maxZoom: 5, minZoom: .5 };
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth - 40;
-canvas.height = window.innerHeight - 40;
-const rand = (m = 255, M = m + (m = 0)) => (Math.random() * (M - m) + m) | 0;
+const mouse = { x: 0, y: 0, oldX: 0, oldY: 0, button: false };
+let boardWidth = 0;
+let boardHeight = 1000;
+let data;
 
-const objects = [];
-for (let i = 0; i < 100; i++) {
-    objects.push({ x: rand(canvas.width), y: rand(canvas.height), w: rand(40), h: rand(40), col: `rgb(${rand()},${rand()},${rand()})` });
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// load json data
+fetch("data/data.json")
+    .then(response => response.json())
+    .then(json => {
+        data = json;
+        loadImages();
+    });
+
+// load images
+function loadImages() {
+    let c = 0;
+    for (i = 0; i < data.length; i++) {
+        const dataObj = data[i];
+        const assetsLoaded = dataObj.map((obj, index) =>
+            new Promise(resolve => {
+                const img = new Image();
+                img.onerror = e => reject(`${url} failed to load`);
+                img.onload = e => resolve(img);
+                img.src = obj.src;
+                img.data = `${i},${index}`;
+            })
+        );
+        Promise
+            .all(assetsLoaded)
+            .then(images => {
+                images.forEach((e) => {
+                    const indexArr = e.data.split(',');
+
+                    // push img into data obj for reference
+                    data[indexArr[0]][indexArr[1]].img = e;
+                });
+
+                if (c === data.length - 1) {
+                    buildEventListeners();
+                }
+
+                render();
+
+                requestAnimationFrame(drawCanvas);
+
+                c++;
+            })
+            .catch(err => console.error(err));
+    }
 }
-requestAnimationFrame(drawCanvas);
 
+
+// render images
+function drawImages() {
+    let yPos = 0;
+    for (i = 0; i < data.length; i++) {
+        let xPos = 0;
+        let maxHeight = 0;
+        const obj = data[i];
+
+        for (j = 0; j < obj.length; j++) {
+            img = new Image();
+            img = obj[j].img;
+
+            if (typeof img !== 'undefined') {
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = '#999999';
+                ctx.drawImage(img, xPos + (settings.outerMargX + settings.innerMargX), yPos + (settings.outerMargY + settings.innerMargY));
+                ctx.shadowBlur = 0;
+
+                maxHeight = Math.max(maxHeight, img.height);
+
+                xPos = xPos + settings.gutterX + img.width;
+
+
+                boardWidth = Math.max(boardWidth, xPos - settings.gutterX + (settings.innerMargX * 2));
+            }
+        }
+        yPos = yPos + maxHeight + settings.gutterY;
+        boardHeight = Math.max(boardHeight, yPos - settings.gutterY + (settings.innerMargY * 2));
+    }
+}
+
+// zoom / pan api
 const view = (() => {
     const matrix = [1, 0, 0, 1, 0, 0]; // current view transform
     var m = matrix; // alias 
@@ -49,36 +126,40 @@ const view = (() => {
             if (dirty) { this.update() }
             scale *= amount;
             console.log(scale);
+
             pos.x = at.x - (at.x - pos.x) * amount;
             pos.y = at.y - (at.y - pos.y) * amount;
             dirty = true;
         },
+        drawBoard() {
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#999999';
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(settings.outerMargX, settings.outerMargY, boardWidth, boardHeight);
+            ctx.shadowBlur = 0;
+        },
     };
     return API;
 })();
-view.context = ctx;
 
+// render canvas
 function drawCanvas() {
     if (view.isDirty()) {
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        view.apply(); // set the 2D context transform to the view
-        for (i = 0; i < objects.length; i++) {
-            var obj = objects[i];
-            ctx.fillStyle = obj.col;
-            ctx.fillRect(obj.x, obj.y, obj.h, obj.h);
-        }
+        render();
     }
     requestAnimationFrame(drawCanvas);
 }
 
-canvas.addEventListener("mousemove", mouseEvent, { passive: true });
-canvas.addEventListener("mousedown", mouseEvent, { passive: true });
-canvas.addEventListener("mouseup", mouseEvent, { passive: true });
-canvas.addEventListener("mouseout", mouseEvent, { passive: true });
-canvas.addEventListener("wheel", mouseWheelEvent, { passive: false });
-const mouse = { x: 0, y: 0, oldX: 0, oldY: 0, button: false };
+function render() {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    view.apply();
+
+    view.drawBoard();
+
+    drawImages();
+}
 
 function mouseEvent(event) {
     if (event.type === "mousedown") { mouse.button = true }
@@ -89,6 +170,9 @@ function mouseEvent(event) {
     mouse.y = event.offsetY
     if (mouse.button) { // pan
         view.pan({ x: mouse.x - mouse.oldX, y: mouse.y - mouse.oldY });
+        document.getElementById('canvas').style.cursor = 'grabbing';
+    } else {
+        document.getElementById('canvas').style.cursor = 'grab';
     }
 }
 
@@ -98,3 +182,23 @@ function mouseWheelEvent(event) {
     if (event.deltaY < 0) { view.scaleAt({ x, y }, 1.1) } else { view.scaleAt({ x, y }, 1 / 1.1) }
     event.preventDefault();
 }
+
+function onWindowResize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    render();
+
+    requestAnimationFrame(drawCanvas);
+}
+
+function buildEventListeners() {
+    window.addEventListener("resize", onWindowResize, { passive: true });
+    canvas.addEventListener("mousemove", mouseEvent, { passive: true });
+    canvas.addEventListener("mousedown", mouseEvent, { passive: true });
+    canvas.addEventListener("mouseup", mouseEvent, { passive: true });
+    canvas.addEventListener("mouseout", mouseEvent, { passive: true });
+    canvas.addEventListener("wheel", mouseWheelEvent, { passive: false });
+}
+
+view.context = ctx;

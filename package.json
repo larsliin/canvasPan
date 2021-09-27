@@ -1,0 +1,19 @@
+{
+  "name": "block_catalogue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larsliin/canvasPan.git"
+  },
+  "author": "Lars Liin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/larsliin/canvasPan/issues"
+  },
+  "homepage": "https://github.com/larsliin/canvasPan#readme"
+}

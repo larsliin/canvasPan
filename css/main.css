@@ -185,8 +185,8 @@ body {
 
 canvas {
     position: absolute;
-    background: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .25);
-    top: 20px;
-    left: 20px;
+    background-color: '#cccccc';
+    top: 0;
+    left: 0;
+    cursor: grab;
 }
