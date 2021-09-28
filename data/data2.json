@@ -2,278 +2,416 @@
 	"settings": {},
 	"blocks": [
 		{
-			"blockGroupHeadline": "Headline 1",
+			"blockGroupHeadline": "Main 1 Column blocks",
 			"blockGroup": [
 				{
-					"id": 1,
-					"headline": "IKEA main block",
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				}
 			]
 		},
 		{
-			"blockGroupHeadline": "Headline 2",
+			"blockGroupHeadline": "Two Column Blocks",
 			"blockGroup": [
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				}
 			]
 		},
 		{
-			"blockGroupHeadline": "Headline 3",
+			"blockGroupHeadline": "Three Column Blocks",
 			"blockGroup": [
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				}
 			]
 		},
 		{
-			"blockGroupHeadline": "Headline 4",
+			"blockGroupHeadline": "50/50 Split Blocks",
 			"blockGroup": [
+				{
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
 
 				{
-					"id": 3,
-					"headline": "Debic main block",
-					"src": "images/debic_mainblock.png"
-				},
-				
-				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				}
 			]
 		},
 		{
-			"blockGroupHeadline": "Headline 5",
+			"blockGroupHeadline": "70/30 Split Blocks",
 			"blockGroup": [
-
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				}
 			]
 		},
 		{
-			"blockGroupHeadline": "Headline 6",
+			"blockGroupHeadline": "Voucher blocks",
 			"blockGroup": [
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				}
 			]
 		},
 		{
-			"blockGroupHeadline": "Headline 7",
+			"blockGroupHeadline": "Header Blocks",
 			"blockGroup": [
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				}				
 			]
 		},
 		{
-			"blockGroupHeadline": "Headline 8",
+			"blockGroupHeadline": "Footer Blocks",
 			"blockGroup": [
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "Lorem ipsum dolor sit amet, facilisi consulatu assueverit mei id, in case repudiare eam.",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				},
 				{
-					"id": 2,
+					"client": "UniLever",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "UniLever main block",
 					"src": "images/unilever_mainblock.png"
 				},
 				{
-					"id": 1,
+					"client": "IKEA",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "IKEA main block",
 					"src": "images/ikea_mainblock.png"
 				},
 				{
-					"id": 3,
+					"client": "FrieslandCampina",
+					"blockname": "main block",
+					"blockdescription": "",
+					"blockHtml": "",
 					"headline": "Debic main block",
 					"src": "images/debic_mainblock.png"
 				}

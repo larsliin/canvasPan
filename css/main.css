@@ -183,10 +183,69 @@ body {
     margin: 0;
 }
 
+input[type=button] {
+    display: inline-block;
+    border: none;
+    padding: 10px 16px;
+    margin: 0;
+    text-decoration: none;
+    background: #111111;
+    color: #ffffff;
+    font-family: 'Arial';
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+input[type=button]:hover {
+    background: transparent;
+    color: #111111;
+    border: solid 1px #111111;
+}
+
+input[type=button]:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+input[type=button]:active {
+    padding: 11px 15px 9px 17px;
+}
+
 canvas {
     position: absolute;
-    background-color: '#cccccc';
+    background-color: #eee;
     top: 0;
     left: 0;
-    cursor: grab;
+}
+
+.nav__top {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,.25);
+}
+
+.nav__topinner {
+    padding: 3px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.nav__topinner > div:first-child {
+    flex: 1;
+}
+
+.nav__headline {
+    font-family: 'Arial Black';
+    margin: 0;
+    color: #333;
+    letter-spacing: -2px;
 }
