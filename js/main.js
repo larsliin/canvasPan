@@ -1,18 +1,20 @@
 /*
     https://stackoverflow.com/a/60235061
 */
-const settings = { outerMargX: 20, outerMargY: 20, innerMargX: 100, innerMargY: 100, gutterX: 100, gutterY: 100, maxZoom: 5, minZoom: .5 };
+const settings = { outerMargX: 20, outerMargY: 20, innerMargX: 100, innerMargY: 150, gutterX: 100, gutterY: 200, maxZoom: 5, minZoom: .5 };
 const ctx = canvas.getContext("2d");
 const mouse = { x: 0, y: 0, oldX: 0, oldY: 0, button: false };
 let boardWidth = 0;
 let boardHeight = 1000;
 let data;
+let blockData;
+var scale = 1;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // load json data
-fetch("data/data.json")
+fetch("data/data2.json")
     .then(response => response.json())
     .then(json => {
         data = json;
@@ -22,8 +24,11 @@ fetch("data/data.json")
 // load images
 function loadImages() {
     let c = 0;
-    for (i = 0; i < data.length; i++) {
-        const dataObj = data[i];
+    blockData = data.blocks;
+
+    for (i = 0; i < blockData.length; i++) {
+        const dataObj = blockData[i].blockGroup;
+        
         const assetsLoaded = dataObj.map((obj, index) =>
             new Promise(resolve => {
                 const img = new Image();
@@ -40,10 +45,11 @@ function loadImages() {
                     const indexArr = e.data.split(',');
 
                     // push img into data obj for reference
-                    data[indexArr[0]][indexArr[1]].img = e;
+                    blockData[indexArr[0]].blockGroup[indexArr[1]].img = e;
+                    // console.log(blockData);
                 });
 
-                if (c === data.length - 1) {
+                if (c === blockData.length - 1) {
                     buildEventListeners();
                 }
 
@@ -60,20 +66,24 @@ function loadImages() {
 
 // render images
 function drawImages() {
-    let yPos = 0;
-    for (i = 0; i < data.length; i++) {
+    let yPos = settings.outerMargY + settings.innerMargY;
+    for (i = 0; i < blockData.length; i++) {
         let xPos = 0;
         let maxHeight = 0;
-        const obj = data[i];
-
+        const headline = blockData[i].blockGroupHeadline;
+        const obj = blockData[i].blockGroup;
+        ctx.fillStyle = '#555';
+        ctx.font = "75px Arial Black";
+        ctx.fillText(headline, settings.outerMargX + settings.innerMargX, yPos);
+        yPos = yPos + 60;
         for (j = 0; j < obj.length; j++) {
             img = new Image();
             img = obj[j].img;
 
             if (typeof img !== 'undefined') {
-                ctx.shadowBlur = 30;
+                ctx.shadowBlur = 50 * scale;
                 ctx.shadowColor = '#999999';
-                ctx.drawImage(img, xPos + (settings.outerMargX + settings.innerMargX), yPos + (settings.outerMargY + settings.innerMargY));
+                ctx.drawImage(img, xPos + (settings.outerMargX + settings.innerMargX), yPos);
                 ctx.shadowBlur = 0;
 
                 maxHeight = Math.max(maxHeight, img.height);
@@ -85,15 +95,14 @@ function drawImages() {
             }
         }
         yPos = yPos + maxHeight + settings.gutterY;
-        boardHeight = Math.max(boardHeight, yPos - settings.gutterY + (settings.innerMargY * 2));
+        boardHeight = Math.max(boardHeight, yPos - settings.gutterY + (settings.innerMargY * 1));
     }
 }
 
 // zoom / pan api
 const view = (() => {
     const matrix = [1, 0, 0, 1, 0, 0]; // current view transform
-    var m = matrix; // alias 
-    var scale = 1; // current scale
+    var m = matrix; // alias
     var ctx; // reference to the 2D context
     const pos = { x: 0, y: 0 }; // current position of origin
     var dirty = true;
@@ -132,7 +141,7 @@ const view = (() => {
             dirty = true;
         },
         drawBoard() {
-            ctx.shadowBlur = 15;
+            ctx.shadowBlur = 30 * scale;
             ctx.shadowColor = '#999999';
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(settings.outerMargX, settings.outerMargY, boardWidth, boardHeight);

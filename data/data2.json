@@ -1,0 +1,283 @@
+{
+	"settings": {},
+	"blocks": [
+		{
+			"blockGroupHeadline": "Headline 1",
+			"blockGroup": [
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				}
+			]
+		},
+		{
+			"blockGroupHeadline": "Headline 2",
+			"blockGroup": [
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				}
+			]
+		},
+		{
+			"blockGroupHeadline": "Headline 3",
+			"blockGroup": [
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				}
+			]
+		},
+		{
+			"blockGroupHeadline": "Headline 4",
+			"blockGroup": [
+
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				}
+			]
+		},
+		{
+			"blockGroupHeadline": "Headline 5",
+			"blockGroup": [
+
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				}
+			]
+		},
+		{
+			"blockGroupHeadline": "Headline 6",
+			"blockGroup": [
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				}
+			]
+		},
+		{
+			"blockGroupHeadline": "Headline 7",
+			"blockGroup": [
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				}				
+			]
+		},
+		{
+			"blockGroupHeadline": "Headline 8",
+			"blockGroup": [
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				},
+				{
+					"id": 2,
+					"headline": "UniLever main block",
+					"src": "images/unilever_mainblock.png"
+				},
+				{
+					"id": 1,
+					"headline": "IKEA main block",
+					"src": "images/ikea_mainblock.png"
+				},
+				{
+					"id": 3,
+					"headline": "Debic main block",
+					"src": "images/debic_mainblock.png"
+				}
+			]
+		}
+	]
+}
